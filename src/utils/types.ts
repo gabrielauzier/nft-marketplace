@@ -1,8 +1,3 @@
-export type RootParamList = {
-  Home: undefined;
-  Details: undefined;
-};
-
 export type Item = {
   id: string;
   name: string;
