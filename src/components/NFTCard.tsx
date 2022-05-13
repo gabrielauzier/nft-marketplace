@@ -3,17 +3,16 @@ import React from "react";
 import { Item } from "../utils/types";
 import { COLORS, SIZES, SHADOWS, assets } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-import CircleButton from "./CircleButton";
 import { EthPrice, NFTTitle, SubInfo } from "./SubInfo";
+import LikeButton from "./LikeButton";
 import RectButton from "./RectButton";
 
 interface NFTCardProps {
   data: Item;
+  onBidButtonPressed: () => void;
 }
 
-const NFTCard = ({ data }: NFTCardProps) => {
-  const navigation = useNavigation();
-
+const NFTCard = ({ data, onBidButtonPressed }: NFTCardProps) => {
   return (
     <View
       style={{
@@ -36,7 +35,7 @@ const NFTCard = ({ data }: NFTCardProps) => {
           }}
         />
 
-        <CircleButton imgURL={assets.heart} onHandlePress={() => {}} />
+        <LikeButton onHandlePress={() => {}} />
       </View>
       <SubInfo />
 
@@ -60,7 +59,7 @@ const NFTCard = ({ data }: NFTCardProps) => {
           <RectButton
             minWidth={120}
             fontSize={SIZES.font}
-            onHandlePress={() => {}}
+            onHandlePress={onBidButtonPressed}
           />
         </View>
       </View>

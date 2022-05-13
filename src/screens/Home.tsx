@@ -2,8 +2,9 @@ import React from "react";
 import { View, FlatList, Text, SafeAreaView } from "react-native";
 import { COLORS, NFTData } from "../../constants";
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
+import { RootScreen } from "../utils/navigation";
 
-const Home = () => {
+const Home: RootScreen<"Home"> = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar animated backgroundColor={COLORS.primary} />
@@ -12,10 +13,17 @@ const Home = () => {
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={NFTData}
-            renderItem={({ item }) => <NFTCard data={item} />}
+            renderItem={({ item }) => (
+              <NFTCard
+                data={item}
+                onBidButtonPressed={() =>
+                  navigation.navigate("Details", { data: item })
+                }
+              />
+            )}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<HomeHeader />}
+            ListHeaderComponent={<HomeHeader onSearch={() => {}} />}
           />
         </View>
 
