@@ -1,43 +1,32 @@
-import {
-  View,
-  Text,
-  TouchableOpacityProps,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { TouchableOpacityProps, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { COLORS, SHADOWS, SIZES } from "../../constants";
+import { assets, COLORS, SHADOWS, SIZES } from "../../constants";
 
-interface CircleButtonProps extends TouchableOpacityProps {
-  imgURL: any;
+interface BackButtonProps extends TouchableOpacityProps {
   onHandlePress: () => void;
 }
 
-const CircleButton = ({
-  imgURL,
-  onHandlePress,
-  ...rest
-}: CircleButtonProps) => {
+const BackButton = ({ onHandlePress, ...rest }: BackButtonProps) => {
   return (
     <TouchableOpacity
       style={{
         width: 40,
         height: 40,
-        backgroundColor: COLORS.white,
         position: "absolute",
+        backgroundColor: COLORS.white,
         borderRadius: SIZES.extraLarge,
         alignItems: "center",
         justifyContent: "center",
+        left: 12,
+        top: 12,
         ...SHADOWS.light,
-        right: 12,
-        top: 10,
         ...rest,
       }}
       onPress={onHandlePress}
       {...rest}
     >
       <Image
-        source={imgURL}
+        source={assets.left}
         resizeMode="contain"
         style={{ width: 24, height: 24 }}
       />
@@ -45,4 +34,4 @@ const CircleButton = ({
   );
 };
 
-export default CircleButton;
+export default BackButton;
