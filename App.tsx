@@ -1,21 +1,13 @@
 import "react-native-gesture-handler";
 import React, { ProviderProps } from "react";
-import {
-  createStackNavigator,
-  StackNavigationProp,
-  StackScreenProps,
-} from "@react-navigation/stack";
-import {
-  DefaultTheme,
-  NavigationContainer,
-  NavigationContainerProps,
-  StackActions,
-} from "@react-navigation/native";
-import { RootParamList } from "./src/utils/types";
+import { createStackNavigator } from "@react-navigation/stack";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import Home from "./src/screens/Home";
 import Details from "./src/screens/Details";
 import { useFonts } from "expo-font";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { RootParamList } from "./src/utils/navigation";
+import Login from "./src/screens/authentication/Login";
+import SignUp from "./src/screens/authentication/SignUp";
 
 const theme = {
   ...DefaultTheme,
@@ -44,10 +36,12 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Home"
+        initialRouteName="Login"
       >
         <Stack.Screen name="Home" component={Home}></Stack.Screen>
         <Stack.Screen name="Details" component={Details}></Stack.Screen>
+        <Stack.Screen name="Login" component={Login}></Stack.Screen>
+        <Stack.Screen name="SignUp" component={SignUp}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
